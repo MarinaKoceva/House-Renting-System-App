@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: ✅ Checkout code
+      - name: ✅ Checkout repository
         uses: actions/checkout@v3
 
       - name: ⚙️ Setup .NET 6 SDK
@@ -19,11 +19,11 @@ jobs:
         with:
           dotnet-version: 6.0.x
 
-      - name: 📦 Restore only Web project
-        run: dotnet restore HouseRentingSystem.Web/HouseRentingSystem.Web.csproj
+      - name: 📦 Restore NuGet packages
+        run: dotnet restore HouseRentingSystem.sln
 
-      - name: 🛠 Build Web project ONLY
-        run: dotnet build HouseRentingSystem.Web/HouseRentingSystem.Web.csproj --no-restore --configuration Release
+      - name: 🛠 Build the solution
+        run: dotnet build HouseRentingSystem.sln --no-restore --configuration Release
 
-      - name: 🧪 Run ONLY Test project
+      - name: 🧪 Run tests
         run: dotnet test HouseRentingSystem.Tests/HouseRentingSystem.Tests.csproj --no-build --verbosity normal
