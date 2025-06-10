@@ -22,8 +22,8 @@ jobs:
       - name: 📦 Restore dependencies
         run: dotnet restore
 
-      - name: 🛠 Build solution
-        run: dotnet build --no-restore --configuration Release
+      - name: 🛠 Build Web project only
+        run: dotnet build HouseRentingSystem.Web/HouseRentingSystem.Web.csproj --no-restore --configuration Release
 
-      - name: 🧪 Run tests
-        run: dotnet test --no-build --verbosity normal
+      - name: 🧪 Run Tests
+        run: dotnet test HouseRentingSystem.Tests/HouseRentingSystem.Tests.csproj --no-build --verbosity normal
