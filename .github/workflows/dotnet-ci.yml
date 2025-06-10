@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [main]
 
-jobs:  # правилно ниво
+jobs:
   build-and-test:
     runs-on: ubuntu-latest
 
@@ -22,8 +22,8 @@ jobs:  # правилно ниво
       - name: 📦 Restore only Web project
         run: dotnet restore HouseRentingSystem.Web/HouseRentingSystem.Web.csproj
 
-      - name: 🛠 Build Web project only
+      - name: 🛠 Build Web project ONLY
         run: dotnet build HouseRentingSystem.Web/HouseRentingSystem.Web.csproj --no-restore --configuration Release
 
-      - name: 🧪 Run Tests
+      - name: 🧪 Run ONLY Test project
         run: dotnet test HouseRentingSystem.Tests/HouseRentingSystem.Tests.csproj --no-build --verbosity normal
