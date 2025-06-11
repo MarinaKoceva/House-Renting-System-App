@@ -23,8 +23,8 @@ jobs:
       - name: 📦 Restore project dependencies
         run: dotnet restore HouseRentingSystem.sln
 
-      - name: 🏗 Build Web project
-        run: dotnet build HouseRentingSystem.Web/HouseRentingSystem.Web.csproj --configuration Release --no-restore
+      - name: 🏗 Build solution
+        run: dotnet build HouseRentingSystem.sln --configuration Release --no-restore
 
       - name: 🧪 Run all tests
         run: dotnet test HouseRentingSystem.sln --no-build --verbosity normal
