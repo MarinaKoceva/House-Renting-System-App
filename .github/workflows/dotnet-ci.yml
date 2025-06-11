@@ -23,7 +23,7 @@ jobs:
       run: dotnet restore HouseRentingSystem.sln
 
     - name: Build project
-      run: dotnet build HouseRentingSystem.sln --configuration Release --no-restore
+      run: dotnet build HouseRentingSystem.Web/HouseRentingSystem.Web.csproj --configuration Release --no-restore
 
     - name: Run tests
       run: dotnet test HouseRentingSystem.sln --no-build --verbosity normal
