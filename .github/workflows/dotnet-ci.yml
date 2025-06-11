@@ -1,29 +1,29 @@
-name: CI Workflow - HouseRentingSystem
+name: .NET CI
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
   pull_request:
-    branches: [main]
+    branches: [ main ]
 
 jobs:
-  build-and-test:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: ✅ Checkout repository
-        uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v4
 
-      - name: ⚙️ Setup .NET 6 SDK
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: 6.0.x
+    - name: Setup .NET SDK
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '7.0.x'
 
-      - name: 📦 Restore NuGet packages
-        run: dotnet restore HouseRentingSystem.sln
+    - name: Restore dependencies
+      run: dotnet restore HouseRentingSystem.sln
 
-      - name: 🛠 Build the solution
-        run: dotnet build HouseRentingSystem.sln --no-restore --configuration Release
+    - name: Build project
+      run: dotnet build HouseRentingSystem.sln --configuration Release --no-restore
 
-      - name: 🧪 Run tests
-        run: dotnet test HouseRentingSystem.Tests/HouseRentingSystem.Tests.csproj --no-build --verbosity normal
+    - name: Run tests
+      run: dotnet test HouseRentingSystem.sln --no-build --verbosity normal
