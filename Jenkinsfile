@@ -1,24 +1,20 @@
-﻿pipeline {
+pipeline {
     agent any
-
-    tools {
-        msbuild 'MSBuild-v6' // това име трябва да съвпада с конфигурацията от Jenkins
-    }
 
     stages {
         stage('Restore') {
             steps {
-                bat 'dotnet restore'
+                sh 'dotnet restore'
             }
         }
         stage('Build') {
             steps {
-                bat 'dotnet build --no-restore'
+                sh 'dotnet build --no-restore'
             }
         }
         stage('Test') {
             steps {
-                bat 'dotnet test --no-build --verbosity normal'
+                sh 'dotnet test --no-build --verbosity normal'
             }
         }
     }
